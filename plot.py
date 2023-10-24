@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import pandas as pd
-import json
+import simplejson as json
 import os
 
 # Load cleaned polling data
@@ -38,7 +38,7 @@ def create_election_json(election_date, current_election_row, polling_data, elec
     # Save the data to a JSON file
     filename = f'json_files/election_data_{current_election_row["Year"]}.json'
     with open(filename, 'w') as json_file:
-        json.dump(d3_json, json_file)
+        json.dump(d3_json, json_file, ignore_nan=True)
 
 # Define a function to create individual charts for each general election
 def create_election_chart(election_date, current_election_row, polling_data, elections):
